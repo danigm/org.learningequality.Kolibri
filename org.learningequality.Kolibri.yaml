@@ -15,11 +15,18 @@ finish-args:
   - --socket=x11
   - --system-talk-name=org.learningequality.Kolibri.Daemon
   - --env=KOLIBRI_HOME=~/.var/app/org.learningequality.Kolibri/data/kolibri
+  - --env=PYTHONPATH=/app/kolibri-plugins/lib/python
 
 add-extensions:
   org.learningequality.Kolibri.Content:
     version: '1.0'
     directory: share/kolibri-content
+    subdirectories: true
+    no-autodownload: true
+  org.learningequality.Kolibri.Plugin:
+    version: '1.0'
+    directory: kolibri-plugins
+    merge-dirs: lib/python
     subdirectories: true
     no-autodownload: true
 
@@ -80,6 +87,11 @@ modules:
     buildsystem: simple
     build-commands:
       - install -d -m 755 ${FLATPAK_DEST}/share/kolibri-content
+
+  - name: kolibri-plugins-dir
+    buildsystem: simple
+    build-commands:
+      - install -d -m 755 ${FLATPAK_DEST}/kolibri-plugins
 
   - name: python3-kolibri-cleanup
     buildsystem: simple
