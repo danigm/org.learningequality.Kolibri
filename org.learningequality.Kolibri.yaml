@@ -24,7 +24,6 @@ add-extensions:
     subdirectories: true
     no-autodownload: true
   org.learningequality.Kolibri.Plugin:
-    version: '1.0'
     directory: kolibri-plugins
     merge-dirs: lib/python
     subdirectories: true
